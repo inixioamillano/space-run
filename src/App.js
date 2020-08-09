@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { GameEngine } from "react-game-engine";
-import { MoveRocket, MoveAsteroid } from "./systems"
+import { MoveAsteroid, MoveMobileRocket, MoveRocket } from "./systems"
 import {Rocket} from "./entities/Rocket";
 import Score from './entities/Score'
 import StarfieldAnimation from 'react-starfield-animation'
 import { Asteroid } from "./entities/Asteroid";
- 
+import {isMobile} from 'react-device-detect'
 export default function SimpleGame(props) {
     const [running, setRunning] = useState(false);
     const [lastScore, setLastScore] = useState();
@@ -15,7 +15,7 @@ export default function SimpleGame(props) {
         <GameEngine
           running={running}
           style={{ width: "100%", height: "100vh", backgroundColor: "black" }}
-          systems={[MoveRocket, MoveAsteroid]}
+          systems={[MoveAsteroid, isMobile ?  MoveMobileRocket : MoveRocket]}
           entities={{
             rocket: {x: window.innerWidth / 2, y: 15, target: window.innerWidth / 2, renderer: <Rocket/>},
             asteroid: {x: 15, y: window.innerHeight - 100, speed: 15, renderer: <Asteroid/>},

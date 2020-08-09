@@ -3,15 +3,20 @@ const MoveRocket = (entities, { input }) => {
     let { payload } = input.find(x => x.name === "onMouseMove") || {};
     const rocket = entities["rocket"];
     if (payload) {
-      rocket.target = payload.pageX;
+      rocket.x = payload.pageX;
     }
-    if (Math.abs(rocket.target - rocket.x)>10){
-        if (rocket.target < rocket.x){
-            rocket.x = rocket.x - 10
-        } else {
-            rocket.x = rocket.x + 10
+    return entities;
+};
+
+const MoveMobileRocket = (entities, { input }) => {
+    
+    let { payload } = input.find(x => x.name === "onTouchMove") || {};
+    const rocket = entities["rocket"];
+    if (payload) {
+        const newLocation = payload.touches[0].pageX;
+        if (newLocation < window.innerWidth && newLocation > 53){
+            rocket.x = newLocation
         }
-       
     }
     
     return entities;
@@ -50,4 +55,4 @@ const MoveAsteroid = (entities, { input }) => {
     return entities
     
 }
-export { MoveRocket, MoveAsteroid };
+export { MoveRocket, MoveAsteroid, MoveMobileRocket };

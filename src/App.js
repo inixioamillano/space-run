@@ -88,7 +88,7 @@ export default function SimpleGame(props) {
                 <i className="fa fa-arrow-circle-left"/>
               </div>
               <div className="menu-selector-item menu-item menu-selector-label">
-                <img style={{height: 23, marginRight: 10}} src={"/"+ships[ship]} alt="ship menu"></img>
+                <img style={{height: 23, marginRight: 10}} src={+ships[ship]} alt="ship menu"></img>
                 {ship}
               </div>
               <div className="menu-selector-item menu-item menu-arrow" onClick={() => {

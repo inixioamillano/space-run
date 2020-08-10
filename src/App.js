@@ -8,9 +8,12 @@ import { Asteroid } from "./entities/Asteroid";
 import {isMobile} from 'react-device-detect';
 import {get, set} from 'idb-keyval'
 import 'font-awesome/css/font-awesome.min.css';
+
+import rocket from './images/rocket.png'
+import tardis from './images/tardis.png'
 const ships = {
-  rocket: "rocket.png",
-  tardis: "tardis.png"
+  rocket,
+  tardis
 }
 
 const speeds = {

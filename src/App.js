@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { GameEngine } from "react-game-engine";
 import { MoveAsteroid, MoveMobileRocket, MoveRocket } from "./systems"
 import {Rocket} from "./entities/Rocket";
@@ -36,8 +36,11 @@ export default function SimpleGame(props) {
     const [lastScore, setLastScore] = useState();
     const [ship, setShip] = useState("rocket")
     const [highestScores, setHighestScores] = useState({easy: 0, medium: 0, hard: 0})
-    getStoredShip().then(ship => setShip(ship || "rocket"))
-    getHighestScores().then(highestScores => highestScores ? setHighestScores(highestScores) : null)
+    
+    useEffect(() => {
+      getStoredShip().then(ship => setShip(ship || "rocket"))
+      getHighestScores().then(highestScores => highestScores ? setHighestScores(highestScores) : null)
+    }, [])
 
     if (running) {
       return (
@@ -51,19 +54,18 @@ export default function SimpleGame(props) {
             asteroid: {x: 15, y: window.innerHeight - 100, speed: speeds[mode], renderer: <Asteroid/>},
             score: {score: 0, lives: 3, gameOver: async (score) => {
               setLastScore(score)
-              getHighestScores(highestScores => {
-                if (!highestScores[mode]){
-                  highestScores[mode] = score
-                  set('highest-scores', highestScores);
-                } else if (score > highestScores[mode]) {
-                  highestScores[mode] = score
-                  set('highest-scores', highestScores);
-                }
-              })
+              if (!highestScores[mode]){
+                highestScores[mode] = score
+                setHighestScores(highestScores)
+                set('highest-scores', highestScores);
+              } else if (score > highestScores[mode]) {
+                highestScores[mode] = score
+                setHighestScores(highestScores)
+                set('highest-scores', highestScores);
+              }
               setRunning(false)
             }, renderer: <Score/>},
           }}>
-            <div>
             <StarfieldAnimation
               style={{
                 position: 'absolute',
@@ -71,7 +73,6 @@ export default function SimpleGame(props) {
                 height: '100%'
               }}
             />
-            </div>
         </GameEngine>           
       </div>)
     } else {
@@ -147,7 +148,7 @@ export default function SimpleGame(props) {
                 <i className="fa fa-arrow-circle-right"/>
               </div>
             </div>
-
+            <div className="menu-score highest-score sm">Highest score: {highestScores[mode]}</div>
       </div>
     };  
 }

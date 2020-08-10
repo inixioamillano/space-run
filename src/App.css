@@ -37,7 +37,7 @@
   background: linear-gradient(to right top, #052337, #273162, #6c327a, #b51a72, #eb124b)
 }
 
-.menu-selector {
+.menu-selector, .highest-score {
   margin-top: 25px
 }
 

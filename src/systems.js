@@ -28,8 +28,8 @@ const MoveAsteroid = (entities, { input }) => {
         const score = entities["score"];
         const rocket = entities.rocket
         if (asteroid.y < 100){
-            asteroid.y = window.innerHeight - 100;
-            asteroid.x = Math.random()*(window.innerWidth - 101);
+            asteroid.y = window.innerHeight;
+            asteroid.x = Math.random()*(window.innerWidth-50);
             if (score) {
                 score.score = score.score+50;
             }
@@ -41,8 +41,8 @@ const MoveAsteroid = (entities, { input }) => {
         var overlap = (Math.abs(asteroid.y - rocket.y) < 100 &&  ((rocketLeft > aLeft && rocketLeft < aRight) || (rocketRight > aLeft && rocketRight < aRight)))
         if (overlap){
             score.lives = score.lives-1;
-            asteroid.y = window.innerHeight - 100;
-            asteroid.x = Math.random()*(window.innerWidth-101);
+            asteroid.y = window.innerHeight;
+            asteroid.x = Math.random()*(window.innerWidth-50);
             if (score.lives < 0){
                 score.gameOver(score.score)
                 score.score = 0

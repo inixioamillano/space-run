@@ -35,7 +35,10 @@ export default function SimpleGame(props) {
     const [mode, setMode] = useState("medium");
     const [lastScore, setLastScore] = useState();
     const [ship, setShip] = useState("rocket")
+    const [highestScores, setHighestScores] = useState({easy: 0, medium: 0, hard: 0})
     getStoredShip().then(ship => setShip(ship || "rocket"))
+    getHighestScores().then(highestScores => highestScores ? setHighestScores(highestScores) : null)
+
     if (running) {
       return (
         <div>

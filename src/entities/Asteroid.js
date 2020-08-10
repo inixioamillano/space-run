@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react'
+import asteroid from '../images/asteroid.png'
 
 export class Asteroid extends PureComponent {
     render(){
@@ -7,7 +8,7 @@ export class Asteroid extends PureComponent {
     const y = this.props.y - size / 2;
     return (
         <div style={{}}>
-            <img style={{ position: "absolute", height: size, bottom: y, left: x }} alt="asteroid" src="asteroid.png"/>
+            <img style={{ position: "absolute", height: size, bottom: y, left: x }} alt="asteroid" src={asteroid}/>
         </div>
         
     )

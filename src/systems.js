@@ -30,7 +30,6 @@ const MoveAsteroid = (entities, { input }) => {
         if (asteroid.y < 100){
             asteroid.y = window.innerHeight - 100;
             asteroid.x = Math.random()*(window.innerWidth - 101);
-            asteroid.speed = 10 + Math.random()*5
             if (score) {
                 score.score = score.score+50;
             }
@@ -44,8 +43,7 @@ const MoveAsteroid = (entities, { input }) => {
             score.lives = score.lives-1;
             asteroid.y = window.innerHeight - 100;
             asteroid.x = Math.random()*(window.innerWidth-101);
-            asteroid.speed = 10 + Math.random()*5
-            if (score.lives === 0){
+            if (score.lives < 0){
                 score.gameOver(score.score)
                 score.score = 0
             }

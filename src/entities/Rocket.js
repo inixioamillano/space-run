@@ -6,7 +6,7 @@ function Rocket(props) {
     const y = 15
     return (
         <div onTouchStart={e => console.log(e.touches[0].clientX)}>
-            <img style={{ position: "absolute", height: size, bottom: y, left: x }} alt="rocket" src="rocket.png"/>
+            <img style={{ position: "absolute", height: size, bottom: y, left: x }} alt="rocket" src={props.image}/>
         </div>
     );
 }

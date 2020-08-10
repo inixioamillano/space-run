@@ -17,8 +17,6 @@ export default function Score(props) {
                 <i className="fa fa-shield" style={getShieldStyle(1)}></i>
                 <i className="fa fa-shield" style={getShieldStyle(2)}></i>
                 <i className="fa fa-shield" style={getShieldStyle(3)}></i>
-                <i className="fa fa-shield" style={getShieldStyle(4)}></i>
-                <i className="fa fa-shield" style={getShieldStyle(5)}></i>
         </div>
     )
 }

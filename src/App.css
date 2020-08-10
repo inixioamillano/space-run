@@ -5,4 +5,55 @@
 
 .space {
   font-family: 'space';
+  color: white;
+  text-align: center;
+}
+
+.sm {
+  font-size: 25px;
+}
+
+.menu {
+  font-size: 50px;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background: black;
+}
+
+.menu-title {
+  margin-top: 50px; 
+  margin-bottom: 50px;
+}
+
+.menu-score {
+  margin-bottom: 20px;
+}
+
+.menu-item {
+  margin-left: 25px;
+  margin-right: 25px;
+  border-radius: 40px;
+  background: linear-gradient(to right top, #052337, #273162, #6c327a, #b51a72, #eb124b)
+}
+
+.menu-selector {
+  margin-top: 25px
+}
+
+.menu-selector-item {
+  display: inline; 
+  padding: 5px;
+}
+
+.menu-arrow {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.menu-selector-label {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 10px; 
+  margin-right: 10px;
 }
